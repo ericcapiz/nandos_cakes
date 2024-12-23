@@ -8,8 +8,9 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import ScrollTop from "./components/ScrollTop";
 
-function App() {
+const App: React.FC = () => {
   const location = useLocation();
+
   return (
     <div className="App">
       <GlobalStyle />
@@ -25,6 +26,6 @@ function App() {
       </AnimatePresence>
     </div>
   );
-}
+};
 
 export default App;
