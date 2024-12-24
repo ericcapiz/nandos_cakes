@@ -39,6 +39,27 @@
 }
 
 .contact-form {
+  .success-message,
+  .error-message {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 500;
+  }
+
+  .success-message {
+    background: rgba(47, 223, 132, 0.1);
+    color: #2fdf84;
+    border: 1px solid rgba(47, 223, 132, 0.2);
+  }
+
+  .error-message {
+    background: rgba(255, 107, 107, 0.1);
+    color: #ff6b6b;
+    border: 1px solid rgba(255, 107, 107, 0.2);
+  }
+
   .input-group {
     margin-bottom: 1.5rem;
 
@@ -50,8 +71,11 @@
       .input-icon {
         position: absolute;
         left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
         color: #24bace;
-        font-size: 1.2rem;
+        opacity: 0.8;
+        z-index: 1;
       }
 
       input,
@@ -72,6 +96,19 @@
           outline: none;
           border-color: #24bace;
           background: rgba(255, 255, 255, 0.1);
+        }
+
+        &:focus + .input-icon {
+          color: #24bace;
+          opacity: 1;
+        }
+
+        &:invalid {
+          border-color: rgba(255, 107, 107, 0.3);
+
+          &:focus {
+            border-color: #ff6b6b;
+          }
         }
       }
 
@@ -109,6 +146,91 @@
       background: rgba(36, 186, 206, 0.3);
       cursor: not-allowed;
     }
+
+    &.submitting {
+      background: rgba(36, 186, 206, 0.7);
+      cursor: not-allowed;
+      position: relative;
+      overflow: hidden;
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: -100%;
+        top: 0;
+        height: 100%;
+        width: 50%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        animation: loading 1s infinite;
+      }
+    }
+  }
+}
+
+@keyframes loading {
+  100% {
+    left: 100%;
+  }
+}
+
+// Improve focus states for accessibility
+input:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(36, 186, 206, 0.3);
+}
+
+// Add responsive hover effects
+@media (hover: hover) {
+  .contact-form {
+    button:not(:disabled):hover {
+      background: darken(#24bace, 10%);
+      transform: translateY(-1px);
+      transition: all 0.2s ease;
+    }
+
+    .icon-input:hover {
+      .input-icon {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+// Improve mobile responsiveness
+@media screen and (max-width: 480px) {
+  .contact-page {
+    padding: 1rem;
+  }
+
+  .contact-container {
+    padding: 1rem;
+  }
+
+  .quick-contact,
+  .consultation-booking {
+    padding: 1rem;
+
+    h2 {
+      font-size: 1.5rem;
+    }
+  }
+
+  .contact-form {
+    .input-group {
+      margin-bottom: 1rem;
+    }
+
+    button {
+      padding: 0.8rem;
+      font-size: 1rem;
+    }
   }
 }
 
@@ -131,26 +253,6 @@
     p {
       margin: 0;
       font-style: italic;
-    }
-  }
-}
-
-// Responsive adjustments
-@media screen and (max-width: 480px) {
-  .contact-page {
-    padding: 1rem;
-  }
-
-  .contact-container {
-    padding: 1rem;
-  }
-
-  .quick-contact,
-  .consultation-booking {
-    padding: 1rem;
-
-    h2 {
-      font-size: 1.5rem;
     }
   }
 }
