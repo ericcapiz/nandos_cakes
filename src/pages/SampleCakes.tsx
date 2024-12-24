@@ -6,13 +6,13 @@ import { m } from "framer-motion";
 import { pageAnimation, fade, photoAnim, lineAnim } from "../animation";
 import { useScroll } from "../components/useScroll";
 
-const MyWork = () => {
+const SampleCakes = () => {
   const [element, controls] = useScroll();
   const [element2, controls2] = useScroll();
 
   return (
     <m.div
-      className="work"
+      className="sample-cakes"
       variants={pageAnimation}
       initial="hidden"
       animate="show"
@@ -21,7 +21,7 @@ const MyWork = () => {
       <div className="cake">
         <m.h2 variants={fade}>Cake 1</m.h2>
         <m.div variants={lineAnim} className="line" />
-        <Link to="/work/cake1">
+        <Link to="/sample-cakes/cake1">
           <div className="hide">
             <m.img variants={photoAnim} src={cake7} alt="cake" />
             <div className="review-indicator">👆 Click to view reviews</div>
@@ -37,7 +37,7 @@ const MyWork = () => {
       >
         <h2>Cake 2</h2>
         <m.div variants={lineAnim} className="line" />
-        <Link to="/work/cake2">
+        <Link to="/sample-cakes/cake2">
           <div className="hide">
             <img src={cake11} alt="cake" />
             <div className="review-indicator">👆 Click to view reviews</div>
@@ -53,7 +53,7 @@ const MyWork = () => {
       >
         <h2>Cake 3</h2>
         <m.div variants={lineAnim} className="line" />
-        <Link to="/work/cake3">
+        <Link to="/sample-cakes/cake3">
           <img src={cake4} alt="cake" />
         </Link>
       </m.div>
@@ -61,4 +61,4 @@ const MyWork = () => {
   );
 };
 
-export default MyWork;
+export default SampleCakes;

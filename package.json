@@ -12,7 +12,6 @@
     "@types/jest": "^29.5.14",
     "@types/node": "^22.10.2",
     "@types/react": "^19.0.2",
-    "@types/react-datepicker": "^7.0.0",
     "@types/react-dom": "^19.0.2",
     "bootstrap": "^5.3.2",
     "emailjs-com": "^3.2.0",
@@ -54,5 +53,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react-datepicker": "^7.0.0"
   }
 }

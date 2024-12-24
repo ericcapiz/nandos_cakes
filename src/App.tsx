@@ -1,7 +1,7 @@
-import AboutMe from "./pages/AboutMe";
+import AboutMe from "./pages/Home";
 import Nav from "./components/Nav";
 import Contact from "./pages/Contact";
-import MyWork from "./pages/MyWork";
+import SampleCakes from "./pages/SampleCakes";
 import CakeDetail from "./pages/CakeDetail";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence, LazyMotion, domAnimation } from "framer-motion";
@@ -18,8 +18,8 @@ const App: React.FC = () => {
         <AnimatePresence mode="wait" initial={false}>
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<AboutMe />} />
-            <Route path="/work" element={<MyWork />} />
-            <Route path="/work/:id" element={<CakeDetail />} />
+            <Route path="/sample-cakes" element={<SampleCakes />} />
+            <Route path="/sample-cakes/:id" element={<CakeDetail />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </AnimatePresence>
