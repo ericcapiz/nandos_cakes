@@ -1,94 +1,156 @@
-.contact {
-  h1,
-  p {
-    color: #24bace;
-  }
+.contact-page {
+  min-height: 90vh;
+  padding: 2rem;
+  background: #063b42;
+  color: #24bace;
+}
 
-  @media only screen and (min-width: 350px) {
-    padding-bottom: 150px;
-  }
+.contact-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  padding: 2rem;
+  background: rgba(43, 115, 124, 0.9);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 
-  @media only screen and (min-width: 768px) {
-    padding-bottom: 180px;
-  }
-
-  @media only screen and (max-width: 1200px) {
-    padding-bottom: 200px;
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
   }
 }
 
-.form-container {
-  display: flex;
-  width: 10%;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 20px;
-  margin: 40px auto;
-  background-color: #2b737c;
-  border-radius: 20px;
-  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+.quick-contact,
+.consultation-booking {
+  padding: 2rem;
 
-  input,
-  textarea {
-    margin: 5px 0;
-    padding: 1rem 0;
-    width: 100%;
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #24bace;
+  }
+
+  p {
+    color: #24bace;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+  }
+}
+
+.contact-form {
+  .input-group {
+    margin-bottom: 1.5rem;
+
+    .icon-input {
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      .input-icon {
+        position: absolute;
+        left: 1rem;
+        color: #24bace;
+        font-size: 1.2rem;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 0.8rem 1rem 0.8rem 3rem;
+        border: 2px solid rgba(36, 186, 206, 0.3);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.05);
+        color: #24bace;
+        transition: all 0.3s ease;
+
+        &::placeholder {
+          color: rgba(36, 186, 206, 0.6);
+        }
+
+        &:focus {
+          outline: none;
+          border-color: #24bace;
+          background: rgba(255, 255, 255, 0.1);
+        }
+      }
+
+      textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+    }
+
+    .error {
+      color: #ff6b6b;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+      display: block;
+    }
   }
 
   button {
-    margin: 20px 0;
-  }
+    width: 100%;
+    padding: 1rem;
+    background: #24bace;
+    color: #063b42;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
 
-  @media only screen and (min-width: 350px) {
-    width: 70%;
-    padding: 5px;
-    justify-content: center;
-    position: relative;
-    top: 50px;
-
-    h1 {
-      font-size: 20px;
+    &:hover {
+      background: darken(#24bace, 10%);
     }
 
-    input,
-    textarea {
-      width: 70%;
-    }
-  }
-
-  @media only screen and (min-width: 768px) {
-    width: 25%;
-    padding: 5px;
-    justify-content: center;
-    position: relative;
-    top: 50px;
-
-    h1 {
-      font-size: 30px;
-    }
-
-    input,
-    textarea {
-      width: 100%;
+    &:disabled {
+      background: rgba(36, 186, 206, 0.3);
+      cursor: not-allowed;
     }
   }
+}
 
-  @media only screen and (min-width: 1200px) {
-    width: 90%;
+.consultation-booking {
+  border-left: 2px solid rgba(36, 186, 206, 0.2);
+
+  @media screen and (max-width: 768px) {
+    border-left: none;
+    border-top: 2px solid rgba(36, 186, 206, 0.2);
+  }
+
+  .coming-soon {
+    display: flex;
     justify-content: center;
-    position: relative;
-    top: 50px;
+    align-items: center;
+    min-height: 200px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
 
-    h1 {
-      font-size: 40px;
+    p {
+      margin: 0;
+      font-style: italic;
     }
+  }
+}
 
-    input,
-    textarea {
-      padding: 10px;
+// Responsive adjustments
+@media screen and (max-width: 480px) {
+  .contact-page {
+    padding: 1rem;
+  }
+
+  .contact-container {
+    padding: 1rem;
+  }
+
+  .quick-contact,
+  .consultation-booking {
+    padding: 1rem;
+
+    h2 {
+      font-size: 1.5rem;
     }
   }
 }
