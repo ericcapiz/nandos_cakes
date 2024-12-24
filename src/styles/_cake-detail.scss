@@ -1,0 +1,98 @@
+.details {
+  color: white;
+
+  h2 {
+    position: relative;
+    left: 47%;
+  }
+
+  @media only screen and (max-width: 2200px) {
+    overflow: hidden;
+  }
+
+  @media only screen and (max-width: 400px) {
+    overflow: hidden;
+    h2 {
+      left: 27%;
+    }
+  }
+
+  @media only screen and (min-width: 401px) and (max-width: 768px) {
+    overflow: hidden;
+    h2 {
+      left: 27%;
+    }
+  }
+
+  @media only screen and (min-width: 769px) and (max-width: 932px) {
+    h2 {
+      left: 40%;
+    }
+  }
+}
+
+.headline {
+  min-height: 90vh;
+  padding-top: 20vh;
+  position: relative;
+
+  h2 {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -10%);
+  }
+
+  img {
+    width: 100%;
+    height: 70vh;
+    object-fit: cover;
+  }
+}
+
+.reviews {
+  min-height: 80vh;
+  display: flex;
+  margin: 5rem 10rem;
+  align-items: center;
+  justify-content: space-around;
+
+  @media (max-width: 400px) {
+    display: block;
+    margin: 2rem 2rem;
+  }
+
+  @media only screen and (min-width: 401px) and (max-width: 768px) {
+    display: block;
+    margin: 2rem 2rem;
+  }
+}
+
+.review {
+  padding: 5rem;
+
+  h3 {
+    font-size: 2rem;
+  }
+
+  .line {
+    width: 100%;
+    background: #23d997;
+    height: 0.5rem;
+    margin: 1rem 0rem;
+  }
+
+  p {
+    padding: 2rem 0rem;
+  }
+}
+
+.image-display {
+  min-height: 50vh;
+
+  img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+  }
+}

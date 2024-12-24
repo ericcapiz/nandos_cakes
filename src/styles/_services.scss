@@ -1,0 +1,25 @@
+.services {
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2rem;
+
+    @media (max-width: 1300px) {
+      justify-content: center;
+    }
+  }
+
+  .card {
+    flex-basis: 20rem;
+    .icon {
+      display: flex;
+      align-items: center;
+      h3 {
+        margin-left: 1rem;
+        background: white;
+        color: black;
+        padding: 1rem;
+      }
+    }
+  }
+}

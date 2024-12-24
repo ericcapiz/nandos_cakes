@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import * as emailjs from "emailjs-com";
 import * as yup from "yup";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
-import styled from "styled-components";
+import { m } from "framer-motion";
+import { pageAnimation } from "../animation";
 
 interface FormData {
   name: string;
@@ -15,100 +16,6 @@ interface FormData {
 interface FormErrors {
   [key: string]: string;
 }
-
-const Cont = styled.div`
-  /* width:100vw; */
-  /* display: flex; */
-
-  h1,
-  p {
-    color: #24bace;
-  }
-
-  @media only screen and (min-width: 350px) {
-    padding-bottom: 150px;
-  }
-
-  @media only screen and (min-width: 768px) {
-    padding-bottom: 180px;
-  }
-
-  @media only screen and (max-width: 1200px) {
-    padding-bottom: 200px;
-  }
-`;
-
-const FormContainer = styled.div`
-  display: flex;
-  width: 10%;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 20px;
-  margin: 40px auto;
-  background-color: #2b737c;
-  border-radius: 20px;
-  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-
-  Input,
-  TextArea {
-    margin: 5px 0;
-    padding: 1rem 0;
-    width: 100%;
-  }
-  Button {
-    margin: 20px 0;
-  }
-
-  @media only screen and (min-width: 350px) {
-    width: 70%;
-    padding: 5px;
-    justify-content: center;
-    position: relative;
-    top: 50px;
-    h1 {
-      font-size: 20px;
-    }
-
-    Input,
-    TextArea {
-      width: 70%;
-    }
-  }
-
-  @media only screen and (min-width: 768px) {
-    width: 25%;
-    padding: 5px;
-    justify-content: center;
-    position: relative;
-    top: 50px;
-    h1 {
-      font-size: 30px;
-    }
-  }
-
-  Input,
-  TextArea {
-    width: 100%;
-  }
-
-  @media only screen and (min-width: 1200) {
-    width: 90%;
-    justify-content: center;
-    position: relative;
-    top: 50px;
-    h1 {
-      font-size: 40px;
-    }
-
-    Input,
-    TextArea {
-      padding: 10px;
-    }
-  }
-`;
 
 const Contact = () => {
   const emptyData: FormData = {
@@ -134,80 +41,77 @@ const Contact = () => {
 
   const formSchema = yup.object().shape({
     name: yup.string().required("Name is required"),
-    email: yup
-      .string()
-      .email("Must be a valid email")
-      .required("Email address is required"),
-    phone: yup.string().required("Please enter your contact number"),
-    subject: yup.string(),
-    message: yup.string().required("Please enter your message"),
+    email: yup.string().email("Invalid email").required("Email is required"),
+    phone: yup.string().required("Phone number is required"),
+    subject: yup.string().required("Subject is required"),
+    message: yup.string().required("Message is required"),
   });
 
-  const validateChange = async (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  useEffect(() => {
+    formSchema.isValid(form).then((valid) => setButton(!valid));
+  }, [form, formSchema]);
+
+  const validateChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     try {
-      const fieldSchema = yup.reach(
-        formSchema,
-        e.target.name
-      ) as yup.StringSchema;
-      await fieldSchema.validate(e.target.value);
+      const schema = yup.reach(formSchema, e.target.name) as yup.StringSchema;
+      await schema.validate(e.target.value);
       setErrors({
         ...errors,
         [e.target.name]: "",
       });
-    } catch (err) {
+    } catch (err: unknown) {
       if (err instanceof yup.ValidationError) {
         setErrors({
           ...errors,
-          [e.target.name]: err.errors[0],
+          [e.target.name]: err.message,
         });
       }
     }
   };
 
-  const formSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    emailjs
-      .sendForm(
-        "gmail",
-        "template_lvpawd4",
-        e.currentTarget,
-        "user_UQlt4Jxj9BNbgpbwy6C2q"
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
-    alert("Your message has been sent!");
-  };
-
-  const inputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const inputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.persist();
-    const newData = {
+    const newFormData = {
       ...form,
       [e.target.name]: e.target.value,
     };
     validateChange(e);
-    setForm(newData);
+    setForm(newFormData);
   };
 
-  useEffect(() => {
-    formSchema.isValid(form).then((isValid) => {
-      setButton(!isValid);
-    });
-  }, [form, formSchema]);
+  const formSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const templateParams = {
+      from_name: form.name,
+      from_email: form.email,
+      to_name: "Fernando",
+      subject: form.subject,
+      message: form.message,
+      phone: form.phone,
+    };
+
+    try {
+      await emailjs.send(
+        "service_ID",
+        "template_ID",
+        templateParams,
+        "user_ID"
+      );
+      setForm(emptyData);
+    } catch (error) {
+      console.error("Failed to send email:", error);
+    }
+  };
 
   return (
-    <Cont>
-      <FormContainer>
+    <m.div
+      className="contact"
+      variants={pageAnimation}
+      initial="hidden"
+      animate="show"
+      exit="exit"
+    >
+      <div className="form-container">
         <h1>Contact Me!</h1>
         <Form onSubmit={formSubmit}>
           {serverError ? <p>{serverError}</p> : null}
@@ -236,7 +140,7 @@ const Contact = () => {
                 type="email"
                 name="email"
                 data-cy="email"
-                placeholder="email@gmail.com"
+                placeholder="Your Email"
                 value={form.email}
                 onChange={inputChange}
               />
@@ -249,10 +153,10 @@ const Contact = () => {
               <p>Phone Number:</p>
               <Input
                 id="phone"
-                type="tel"
+                type="text"
                 name="phone"
                 data-cy="phone"
-                placeholder="Phone Number"
+                placeholder="Your Phone Number"
                 value={form.phone}
                 onChange={inputChange}
               />
@@ -284,7 +188,7 @@ const Contact = () => {
                 type="textarea"
                 name="message"
                 data-cy="message"
-                placeholder="Please be detailed within your message"
+                placeholder="Your Message"
                 value={form.message}
                 onChange={inputChange}
               />
@@ -296,8 +200,8 @@ const Contact = () => {
             Submit
           </Button>
         </Form>
-      </FormContainer>
-    </Cont>
+      </div>
+    </m.div>
   );
 };
 

@@ -1,0 +1,60 @@
+.work {
+  min-height: 100vh;
+  overflow: hidden;
+  padding: 5rem 10rem;
+
+  @media (max-width: 1300px) {
+    padding: 2rem 2rem;
+  }
+
+  h2 {
+    padding: 1rem 0rem;
+  }
+
+  .cake {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10rem;
+
+    .line {
+      height: 0.5rem;
+      background: #23d997;
+      margin-bottom: 3rem;
+    }
+
+    img {
+      width: 100%;
+      max-width: 500px;
+      height: 50vh;
+      object-fit: cover;
+      border-radius: 15%;
+      opacity: 85%;
+      transition: all 0.5s ease;
+
+      @media (max-width: 375px) {
+        border-radius: 5%;
+        height: 40vh;
+        max-width: 100%;
+      }
+
+      &:hover {
+        opacity: 100%;
+      }
+    }
+
+    .review-indicator {
+      text-align: center;
+      color: #1b1b1b;
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      font-weight: bold;
+      text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
+    }
+
+    a {
+      text-decoration: none;
+    }
+  }
+}

@@ -6,8 +6,6 @@ import {
   faUserTie,
 } from "@fortawesome/free-solid-svg-icons";
 import bake from "../img/bake.jfif";
-import { About, Description, Image } from "../styles";
-import styled from "styled-components";
 import { scrollReveal, fade } from "../animation";
 import { useScroll } from "./useScroll";
 import { m } from "framer-motion";
@@ -22,39 +20,40 @@ const ServicesSection = () => {
   };
 
   return (
-    <Services
+    <m.div
+      className="about services"
       animate={controls}
       ref={element}
       initial="hidden"
       variants={scrollReveal}
     >
-      <Description>
+      <div className="description">
         <h2>
           High <span>Quality </span>Cakes
         </h2>
-        <Cards>
-          <Card>
+        <div className="cards">
+          <div className="card">
             <div className="icon">
               <FontAwesomeIcon style={style} icon={faClock} />
               <h3>Fast Service</h3>
             </div>
             <p>Within 24hrs in most cases!</p>
-          </Card>
-          <Card>
+          </div>
+          <div className="card">
             <div className="icon">
               <FontAwesomeIcon style={style} icon={faMoneyBillWave} />
               <h3>Affordable</h3>
             </div>
             <p>Feel free to reach out for any promotional pricing/discounts!</p>
-          </Card>
-          <Card>
+          </div>
+          <div className="card">
             <div className="icon">
               <FontAwesomeIcon style={style} icon={faBirthdayCake} />
               <h3>Custom Made</h3>
             </div>
             <p>Dream Big!</p>
-          </Card>
-          <Card>
+          </div>
+          <div className="card">
             <div className="icon">
               <FontAwesomeIcon style={style} icon={faUserTie} />
               <h3>Professional Service</h3>
@@ -63,66 +62,14 @@ const ServicesSection = () => {
               I've been baking since I was young but professionally for eight
               years.
             </p>
-          </Card>
-        </Cards>
-      </Description>
-      <Image>
+          </div>
+        </div>
+      </div>
+      <div className="image">
         <m.img variants={fade} src={bake} alt="cake" />
-      </Image>
-    </Services>
+      </div>
+    </m.div>
   );
 };
-
-const Services = styled(m(About))`
-  h2 {
-    padding-bottom: 5rem;
-  }
-  p {
-    width: 70%;
-    padding: 2rem 0rem 4rem 0rem;
-  }
-
-  @media (max-width: 400px) {
-    h2 {
-      padding: 5rem 0rem;
-    }
-  }
-
-  @media only screen and (min-width: 401px) and (max-width: 768px) {
-    p {
-      width: 100%;
-    }
-  }
-`;
-
-const Cards = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  @media only screen and (max-width: 400px) {
-    justify-content: center;
-  }
-`;
-
-const Card = styled.div`
-  flex-basis: 20rem;
-  .icon {
-    display: flex;
-    align-items: center;
-    h3 {
-      margin-left: 1rem;
-      padding: 1rem;
-    }
-  }
-  @media only screen and (max-width: 400px) {
-    flex-basis: 15rem;
-  }
-  h3 {
-    font-size: 2rem;
-  }
-  @media only screen and (min-width: 401px) and (max-width: 768px) {
-    flex-basis: 25rem;
-    text-align: center;
-  }
-`;
 
 export default ServicesSection;

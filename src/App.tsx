@@ -1,5 +1,4 @@
 import AboutMe from "./pages/AboutMe";
-import GlobalStyle from "./components/GlobalStyle";
 import Nav from "./components/Nav";
 import Contact from "./pages/Contact";
 import MyWork from "./pages/MyWork";
@@ -14,7 +13,6 @@ const App: React.FC = () => {
   return (
     <LazyMotion strict features={domAnimation}>
       <div className="App">
-        <GlobalStyle />
         <ScrollTop />
         <Nav />
         <AnimatePresence mode="wait">

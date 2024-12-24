@@ -1,0 +1,94 @@
+.contact {
+  h1,
+  p {
+    color: #24bace;
+  }
+
+  @media only screen and (min-width: 350px) {
+    padding-bottom: 150px;
+  }
+
+  @media only screen and (min-width: 768px) {
+    padding-bottom: 180px;
+  }
+
+  @media only screen and (max-width: 1200px) {
+    padding-bottom: 200px;
+  }
+}
+
+.form-container {
+  display: flex;
+  width: 10%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 20px;
+  margin: 40px auto;
+  background-color: #2b737c;
+  border-radius: 20px;
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+
+  input,
+  textarea {
+    margin: 5px 0;
+    padding: 1rem 0;
+    width: 100%;
+  }
+
+  button {
+    margin: 20px 0;
+  }
+
+  @media only screen and (min-width: 350px) {
+    width: 70%;
+    padding: 5px;
+    justify-content: center;
+    position: relative;
+    top: 50px;
+
+    h1 {
+      font-size: 20px;
+    }
+
+    input,
+    textarea {
+      width: 70%;
+    }
+  }
+
+  @media only screen and (min-width: 768px) {
+    width: 25%;
+    padding: 5px;
+    justify-content: center;
+    position: relative;
+    top: 50px;
+
+    h1 {
+      font-size: 30px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+    }
+  }
+
+  @media only screen and (min-width: 1200px) {
+    width: 90%;
+    justify-content: center;
+    position: relative;
+    top: 50px;
+
+    h1 {
+      font-size: 40px;
+    }
+
+    input,
+    textarea {
+      padding: 10px;
+    }
+  }
+}
