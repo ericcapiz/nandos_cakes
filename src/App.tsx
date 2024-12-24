@@ -15,7 +15,7 @@ const App: React.FC = () => {
       <div className="App">
         <ScrollTop />
         <Nav />
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="wait" initial={false}>
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<AboutMe />} />
             <Route path="/work" element={<MyWork />} />

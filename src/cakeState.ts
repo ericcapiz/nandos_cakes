@@ -2,6 +2,7 @@ import cake7 from "./img/Cakes/cake7.jpg";
 import cake11 from "./img/Cakes/cake11.jpg";
 import cake5 from "./img/Cakes/cake5.jpg";
 import cake3 from "./img/Cakes/cake3.jpg";
+import cake4 from "./img/Cakes/cake4.jpg";
 
 interface Review {
   title: string;
@@ -22,7 +23,7 @@ export const CakeState = (): Cake[] => {
       title: "Cake 1",
       mainImg: cake7,
       secondaryImg: cake5,
-      url: "/work/cake1",
+      url: "cake1",
       reviews: [
         {
           title: "Truly A masterpiece",
@@ -42,8 +43,8 @@ export const CakeState = (): Cake[] => {
     {
       title: "Cake 2",
       mainImg: cake11,
-      url: "/work/cake2",
       secondaryImg: cake3,
+      url: "cake2",
       reviews: [
         {
           title: "Impressed",
@@ -59,6 +60,27 @@ export const CakeState = (): Cake[] => {
           title: "Need More Cake",
           description:
             "Such an awesome job with this cake, I will be reaching out and placing more orders!",
+        },
+      ],
+    },
+    {
+      title: "Cake 3",
+      mainImg: cake4,
+      secondaryImg: cake3,
+      url: "cake3",
+      reviews: [
+        {
+          title: "Amazing Design",
+          description: "The attention to detail was incredible!",
+        },
+        {
+          title: "Perfect Celebration Cake",
+          description: "Made our special day even more special.",
+        },
+        {
+          title: "Delicious and Beautiful",
+          description:
+            "Not only did it look amazing, but it tasted fantastic too!",
         },
       ],
     },

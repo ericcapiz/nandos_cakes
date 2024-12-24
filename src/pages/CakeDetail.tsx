@@ -17,37 +17,40 @@ interface Cake {
   reviews: Review[];
 }
 
+interface ReviewProps {
+  title: string;
+  description: string;
+}
+
 const CakeDetail = () => {
-  const navigate = useNavigate();
   const { id } = useParams();
-  const [cakes] = useState(CakeState());
+  const [cakes] = useState<Cake[]>(CakeState);
   const [cake, setCake] = useState<Cake | null>(null);
 
   useEffect(() => {
-    const currentCake = cakes.filter((stateCake) => stateCake.url === id)[0];
+    const currentCake = cakes.find((stateCake) => stateCake.url === id);
     if (currentCake) {
       setCake(currentCake);
-    } else {
-      navigate("/work");
     }
-  }, [cakes, id, navigate]);
+  }, [cakes, id]);
 
   return (
-    <>
+    <m.div
+      className="details"
+      variants={pageAnimation}
+      initial="hidden"
+      animate="show"
+      exit="exit"
+      layoutId={id}
+    >
       {cake && (
-        <m.div
-          className="details"
-          variants={pageAnimation}
-          initial="hidden"
-          animate="show"
-          exit="exit"
-        >
+        <>
           <div className="headline">
             <h2>{cake.title}</h2>
             <img src={cake.mainImg} alt="cake" />
           </div>
           <div className="reviews">
-            {cake.reviews.map((review) => (
+            {cake.reviews.map((review: Review) => (
               <Review
                 title={review.title}
                 description={review.description}
@@ -55,22 +58,20 @@ const CakeDetail = () => {
               />
             ))}
           </div>
-          <div className="image-display">
-            <img src={cake.secondaryImg} alt="cake" />
+          <div className="similar-cakes">
+            <h2>Similar Cakes</h2>
+            <div className="similar-images">
+              <img src={cake.secondaryImg} alt="similar cake" />
+              {/* If you want to show more similar cakes, you could map through other cakes */}
+            </div>
           </div>
-        </m.div>
+        </>
       )}
-    </>
+    </m.div>
   );
 };
 
-const Review = ({
-  title,
-  description,
-}: {
-  title: string;
-  description: string;
-}) => {
+const Review = ({ title, description }: ReviewProps) => {
   return (
     <div className="review">
       <h3>{title}</h3>
