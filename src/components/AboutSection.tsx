@@ -1,36 +1,24 @@
-import { Link } from "react-router-dom";
-import Wave from "../components/Wave";
-import cake1 from "../img/Cakes/cake1.jpg";
-import { motion } from "framer-motion";
-import { titleAnim, fade, photoAnim } from "../animation";
+import { m } from "framer-motion";
+import { pageAnimation } from "../animation";
+import ServicesSection from "../components/ServicesSection";
+import FaqSection from "../components/FaqSection";
 
-const AboutSection = () => {
+const About = () => {
   return (
-    <div className="about">
-      <div className="description">
-        <motion.div initial="hidden" animate="show" className="title">
-          <div className="hide">
-            <motion.h2 variants={titleAnim}>
-              The More<span> Cake</span>,
-            </motion.h2>
-          </div>
-          <div className="hide">
-            <motion.h2 variants={titleAnim}>The Batter</motion.h2>
-          </div>
-        </motion.div>
-        <motion.p variants={fade}>
-          Contact me for all your sweet tooth needs!
-        </motion.p>
-        <Link to="/contact">
-          <motion.button variants={fade}>Contact Me</motion.button>
-        </Link>
+    <m.div variants={pageAnimation} initial="hidden" animate="show" exit="exit">
+      <div className="about-container">
+        <h2>
+          About <span>Nando's Cakes</span>
+        </h2>
+        <p>
+          Bringing your sweet dreams to life with custom-made cakes for any
+          occasion.
+        </p>
       </div>
-      <div className="image">
-        <motion.img variants={photoAnim} src={cake1} alt="cake" />
-      </div>
-      <Wave />
-    </div>
+      <ServicesSection />
+      <FaqSection />
+    </m.div>
   );
 };
 
-export default AboutSection;
+export default About;

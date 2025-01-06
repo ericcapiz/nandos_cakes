@@ -11,8 +11,10 @@ const Toggle = ({ children, title }: ToggleProps) => {
 
   return (
     <m.div layout className="question" onClick={() => setToggle(!toggle)}>
-      <m.h4 layout>{title}</m.h4>
-      {toggle ? children : ""}
+      <m.h4 layout className={toggle ? "active" : ""}>
+        {title}
+      </m.h4>
+      {toggle && children}
       <div className="faq-line"></div>
     </m.div>
   );

@@ -15,7 +15,7 @@ const AboutMe = () => {
             </m.h2>
           </div>
           <div className="hide">
-            <m.h2 variants={titleAnim}>The Batter</m.h2>
+            <m.h2 variants={titleAnim}>Batter</m.h2>
           </div>
         </m.div>
         <m.p variants={fade}>Contact me for all your sweet tooth needs!</m.p>

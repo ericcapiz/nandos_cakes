@@ -9,14 +9,15 @@ const FaqSection = () => {
 
   return (
     <m.div
-      className="about faq"
+      className="faq"
       variants={scrollReveal}
       ref={element}
       animate={controls}
       initial="hidden"
     >
       <h2>
-        Any Questions? <span>FAQ</span>
+        Any Questions?
+        <span>FAQ</span>
       </h2>
       <LayoutGroup>
         <Toggle title="How Long Does Delivery Take?">

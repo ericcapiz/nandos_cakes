@@ -3,6 +3,7 @@ import Nav from "./components/Nav";
 import Contact from "./pages/Contact";
 import SampleCakes from "./pages/SampleCakes";
 import CakeDetail from "./pages/CakeDetail";
+import About from "./components/AboutSection";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence, LazyMotion, domAnimation } from "framer-motion";
 import ScrollTop from "./components/ScrollTop";
@@ -18,6 +19,7 @@ const App: React.FC = () => {
         <AnimatePresence mode="wait" initial={false}>
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<AboutMe />} />
+            <Route path="/about" element={<About />} />
             <Route path="/sample-cakes" element={<SampleCakes />} />
             <Route path="/sample-cakes/:id" element={<CakeDetail />} />
             <Route path="/contact" element={<Contact />} />
