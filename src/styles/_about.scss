@@ -1,6 +1,6 @@
 .about-container {
   min-height: 40vh;
-  background: linear-gradient(to bottom, #063b42 0%, #aad6d7 100%);
+  background: linear-gradient(to bottom, #2a5f68 0%, #8ccfd1 100%);
   padding: 5rem 10rem;
   text-align: center;
   position: relative;
@@ -33,7 +33,7 @@
     left: 0;
     right: 0;
     height: 100px;
-    background: linear-gradient(to bottom, #aad6d7 0%, transparent 100%);
+    background: linear-gradient(to bottom, #8ccfd1 0%, transparent 100%);
     z-index: 1;
   }
 
@@ -51,7 +51,6 @@
   }
 }
 
-// Enhanced styling for services section
 .services {
   background: #fff;
   padding: 8rem 10rem;
@@ -97,7 +96,6 @@
   }
 }
 
-// Enhanced styling for FAQ section
 .faq {
   background: #aad6d7;
   padding: 8rem 10rem;
